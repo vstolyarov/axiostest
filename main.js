@@ -2,7 +2,8 @@ function performGetRequest1(){
   var resultElement = document.getElementById('getResult1');
   resultElement.innerHTML = '';
 
-  axios.get('http://jsonplaceholder.typicode.com/todos')
+//axios.get('http://jsonplaceholder.typicode.com/todos')
+axios.get('http://localhost:3000/posts')
     .then(function (response) {
       resultElement.innerHTML = generateSuccessHTMLOutput(response);
     })
@@ -39,7 +40,8 @@ function performGetRequest2(){
   var todoId = document.getElementById('todoId').value;
   resultElement.innerHTML = '';
 
-  axios.get('http://jsonplaceholder.typicode.com/todos', {
+//axios.get('http://jsonplaceholder.typicode.com/todos', {
+  axios.get('http://localhost:3000/posts', {
     params: {
       id: todoId
     }
@@ -57,12 +59,14 @@ document.getElementById('todoInputForm').addEventListener('submit', performPostR
 function performPostRequest(e) {
   var resultElement = document.getElementById('postResult');
   var todoTitle = document.getElementById('todoTitle').value;
+  var todoId1 = document.getElementById('todoId1').value;
   resultElement.innerHTML = '';
 
-  axios.post('http://jsonplaceholder.typicode.com/todos', {
-    userId: '1',
+  //axios.post('http://jsonplaceholder.typicode.com/todos', {
+    axios.post('http://localhost:3000/posts', {
+    id: todoId1,
     title: todoTitle,
-    completed: false
+    author: ''
   })
   .then(function(response) {
     resultElement.innerHTML = generateSuccessHTMLOutput(response);
